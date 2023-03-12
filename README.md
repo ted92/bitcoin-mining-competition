@@ -183,7 +183,7 @@ to the current status of the blockchain, user data, and visualization
 tools that enable the monitoring of the competition's progression.
 
 ### Pre-code
-Download the pre-code from [here](todo:insert github link)
+Download the pre-code [here](https://github.com/ted92/bitcoin-mining-competition)
 and acquaint yourself with its structure. The scripts and
 folders are depicted below for your reference:
 ```
@@ -330,7 +330,7 @@ must provide a comprehensive explanation. If the candidate
 encounters difficulties with coding, they should document
 their attempts and provide an explanation in their report.
 ### Code
-Upon downloading the code from [here](todo:link), the
+Upon downloading the code from [here](https://github.com/ted92/bitcoin-mining-competition), the
 candidate is required to perform the following tasks:
 1) Send their username to [enrico.tedeschi@uit.no](mailto:enrico.tedeschi@uit.no)
 to obtain the public and private keys.
@@ -399,4 +399,4 @@ me at my office in A214.
 [6] Benet, J. (2017). Filecoin: A Decentralized Storage Network. [Available here](https://filecoin.io/filecoin.pdf)
 ## Authors
 
-* **Enrico Tedeschi** - *INF-3203* - [bitcoin-mining-competition]()
+* **Enrico Tedeschi** - *INF-3203* - [bitcoin-mining-competition](https://github.com/ted92/bitcoin-mining-competition)

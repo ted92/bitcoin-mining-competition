@@ -25,6 +25,9 @@ import json
 from datetime import datetime
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
+from utils.flask_utils import flask_call
+from server import BLOCK_PROPOSAL
+
 def main(argv):
     try:
         opts, args = getopt.getopt(argv, "hi:tm")

@@ -185,7 +185,7 @@ tools that enable the monitoring of the competition's progression.
 ### Pre-code
 Download the pre-code [here](https://github.com/ted92/bitcoin-mining-competition)
 and acquaint yourself with its structure. The scripts and
-folders are depicted below for your reference:
+folders are depicted below for your reference (#TODO are the scripts you can/should edit):
 ```
 .
 ├── README.md
@@ -196,11 +196,11 @@ folders are depicted below for your reference:
 │   │   ├── transaction.py
 │   │   └── user.py
 │   ├── backbone
-│   │   ├── consensus.py
-│   │   └── merkle.py
-│   ├── main.py
+│   │   ├── consensus.py--#TODO
+│   │   └── merkle.py-----#TODO
+│   ├── main.py--#TODO
 │   ├── server
-│   │   └── __init__.py
+│   │   └── __init__.py---#TODO
 │   └── utils
 │       ├── conversions.py
 │       ├── cryptographic.py
@@ -253,8 +253,9 @@ institutional username (e.g. abc123).
 3) The public and private keys must be saved in the `vis/users/` directory.
 4) Verify that the `ADDRESS` constant is set to `129.242.22.15`,
 which is the server address.
-5) Before commencing the mining process, ensure that the user is
-registered with the server by invoking the command `python main.py -i u`.
+5) You can run the script `main.py` by running it from the `src/` directory.
+You can start running the command `python main.py -h`, to check all available
+commands.
 ### Get your Private/Public keys
 In this particular blockchain implementation, verification is
 carried out utilizing the `rsa` framework. It is required that
@@ -266,8 +267,22 @@ the corresponding username. By doing so, once the block has
 been confirmed (after a period of 6 blocks), the reward will
 be granted to the user.
 
+To get your public/private keys, you need to send your group
+username as specified earlier to [enrico.tedeschi@uit.no](mailto:enrico.tedeschi@uit.no).
 Once the private and public keys have been acquired and
-saved in `vis/users/`, the candidate is advised to
+saved in `vis/users/`, the candidate shall implement and read
+the server's reply to `GET_USERS` call so that `python main.py -i u` returns:
+```
++-------------------------------------------------------------------------------------+
+|                                     Users INFO                                      |
++----------+---------+---------------+--------------+------------------+--------------+
+| username | address | balance (BTC) | mined blocks | confirmed blocks | reward (BTC) |
++----------+---------+---------------+--------------+------------------+--------------+
+|  enrico  | cf14e63 |     1000.0    |      2       |        0         |      0.0     |
+|   aril   | e6586e7 |     1000.0    |      0       |        0         |      0.0     |
++----------+---------+---------------+--------------+------------------+--------------+
+```
+The candidate is advised to
 familiarize themselves with the `sign` and `verification`
 implementations that are utilized from the `User` class.
 
@@ -353,6 +368,8 @@ for double hashing a block header is the following:
 2) time
 3) Merkle root
 4) nonce
+
+The starting **difficulty is set at 6**.
 
 ### Report
 The report must present a comprehensive description of the approach

@@ -335,17 +335,25 @@ candidate is required to perform the following tasks:
 1) Send their username to [enrico.tedeschi@uit.no](mailto:enrico.tedeschi@uit.no)
 to obtain the public and private keys.
 2) Familiarize themselves with the code and interact
-with the server by managing basic client-side responses after
-calling `GET_BLOCKCHAIN` or `GET_USERS`.
+with the server by implementing and managing basic
+client-side responses with API calls of `GET_BLOCKCHAIN`
+and `GET_USERS`. Commands `python main.py -i [b, u]`;
 3) Learn about Proof of Work and Merkle trees (useful
 for the report) so to handle and understand the
-`REQUEST_TXS` calls for mining new blocks.
+`REQUEST_TXS` calls for mining new blocks. Command `python main.py -t`;
 4) Implement **Merkle tree** structure in `src/backbone/merkle.py`;
-5) Implement the consensus mechanism **Proof of Work** in `src/backbone/consensus.py`;
+5) Implement the consensus mechanism **Proof of Work**
+in `src/backbone/consensus.py`. Command `python main.py -m`;
 
 Note that the `hash_function()` is used for verification server-side in
 the Merkle tree, while `double_hash()` is used for Proof of Work.
-Both functions can be found in `src/utils/cryptographic.py`.
+Both functions can be found in `src/utils/cryptographic.py`, and the order
+for double hashing a block header is the following:
+1) previous block hash
+2) time
+3) Merkle root
+4) nonce
+
 ### Report
 The report must present a comprehensive description of the approach
 employed by the candidate to solve the given problem. It should

@@ -1,4 +1,4 @@
-DIFFICULTY = 6
+DIFFICULTY = 5
 USER_PATH = "../vis/users/"
 USER_FILE = "users.db"
 BLOCKCHAIN_PATH = "../vis/blockchain/"
@@ -11,7 +11,7 @@ PORT = '8080'
 ADDRESS = '129.242.22.15'
 URL = 'https://' + ADDRESS + ':' + PORT + '/'
 
-SELF = 'your_username'  # TODO: insert your username here
+SELF = 'enrico'  # TODO: insert your username here
 
 # endpoints
 BLOCK_PROPOSAL = 'block_proposal'

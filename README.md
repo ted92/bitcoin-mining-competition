@@ -198,7 +198,7 @@ folders are depicted below for your reference (#TODO are the scripts you can/sho
 │   ├── backbone
 │   │   ├── consensus.py--#TODO
 │   │   └── merkle.py-----#TODO
-│   ├── main.py--#TODO
+│   ├── main.py-----------#TODO
 │   ├── server
 │   │   └── __init__.py---#TODO
 │   └── utils

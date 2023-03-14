@@ -8,9 +8,10 @@ Assignment 2 - Blockchain Mining Competition
 
 Usage:
         -h                  : display usage information
-        -i [b, u]           : display information for blocks or users
-        -t                  : request N transactions
-        -m                  : mine a block
+        -i [b, u]           : display information for blocks or users   #TODO
+        -t                  : request N transactions                    #TODO
+        -m                  : mine a block                              #TODO
+        -v b                : visualize blockchain, saved to vis/blockchain/blockchain.pdf
         -d                  : request DIFFICULTY level
 """
 __author__ = "Enrico Tedeschi"
@@ -59,6 +60,17 @@ def main(argv):
                 # TODO: Implement GET_TXS
                 print("To be implemented ...")
                 valid_args = True
+            if opt == "-v":
+                if arg == "b":
+                    # fetch blockchain from server
+                    # get blockchain info
+                    _, blockchain, code = flask_call('GET', GET_BLOCKCHAIN)
+                    if blockchain:
+                        b_chain = Blockchain.load_json(json.dumps(blockchain))
+                        # saves the blockchain as pdf in "vis/blockchain/blockchain.pdf"
+                        visualize_blockchain(b_chain.block_list, n_blocks=20)
+                        visualize_blockchain_terminal(b_chain.block_list, n_blocks=20)
+                    valid_args = True
             if opt == "-d":
                 response, difficulty, code = flask_call('GET', REQUEST_DIFFICULTY)
                 print(response)

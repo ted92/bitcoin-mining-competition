@@ -1,8 +1,10 @@
 # utils/view.py
+from server import DIFFICULTY
 
 import networkx as nx
 import matplotlib.pyplot as plt
 from prettytable import PrettyTable
+import matplotlib.patches as mpatches
 
 class Colors:
     """
@@ -60,26 +62,109 @@ def create_visualization_table(fields, row_list, title):
     table.title = title
     return table
 
+def visualize_blockchain_terminal(blocks, n_blocks=15):
+    """
+    Visualize the last ten blocks of the blockchain with different node colors based on their properties.
 
-def visualize_blockchain(blocks, path="../vis/blockchain/blockchain.pdf"):
+    :param blocks: A list of Block objects.
+    :param n_blocks: number of blocks to be represented
+    """
+    # Create a new table
+    table = PrettyTable()
+    table.field_names = ["Block", "Prev Hash", "Nonce", "Time", "Creation Time", "Mined By", "Color", "Difficulty"]
+
+    # Add the last ten blocks to the table
+    last_ten_blocks = blocks[-n_blocks:]
+    for b in last_ten_blocks:
+        node_color = 'red'
+        if b.main_chain:
+            node_color = 'lightblue'
+            if b.confirmed:
+                node_color = 'green'
+        table.add_row([get_hash_for_visualization(b.hash), get_hash_for_visualization(b.prev), b.nonce, b.time,
+                       b.creation_time, b.mined_by, node_color, get_difficulty_from_hash(b.hash)])
+
+    # Print the table
+    print(table)
+
+def get_difficulty_from_hash(hash):
     """
 
-    :param blocks:
-    :param path:
+    :param hash:
     :return:
     """
+    diff = 0
+    for char in hash:
+        if char == '0':
+            diff += 1
+        else:
+            break
+    return diff
+
+def visualize_blockchain(blocks, path="../vis/blockchain/blockchain.pdf", n_blocks=15):
+    """
+    Visualize the last ten blocks of the blockchain with different node colors based on their properties.
+
+    :param blocks: A list of Block objects.
+    :param path: The path to save the visualization.
+    :param n_blocks: number of blocks to be represented
+    """
+    # Create a new graph
     g = nx.DiGraph()
-    # add nodes
-    for b in blocks[-10:]:
-        node_color = 'blue' if b.main_chain else 'orange'  # set node color based on parameter
-        g.add_node(str(b.hash[:8]) + str(b.confirmed), transactions=b.transactions, nonce=b.nonce, time=b.time, creation_time=b.creation_time, color=node_color)
 
-    # add edges
-    for b in blocks:
-        if b.prev is not None:
-            g.add_edge(str(b.hash[:8]) + str(b.confirmed), str(b.prev[:8]) + str(b.confirmed))
+    # Add the last ten blocks to the graph
+    last_ten_blocks = blocks[-n_blocks:]
+    for b in last_ten_blocks:
+        node_color = 'red'
+        if b.main_chain:
+            node_color = 'lightblue'
+            if b.confirmed:
+                node_color = 'green'
+        g.add_node(b.hash, color=node_color, label=b.mined_by)
 
-    # draw graph
+    # Add edges between blocks
+    for b in last_ten_blocks:
+        if b.prev is not None and b.prev in g:
+            g.add_edge(b.hash, b.prev)
+
+    # Draw the graph
     pos = nx.spring_layout(g)
-    nx.draw(g, pos, node_color='orange', with_labels=True)
+    node_colors = [g.nodes[n]['color'] for n in g.nodes]
+    nx.draw(g, pos, node_color=node_colors, labels=nx.get_node_attributes(g, 'label'), with_labels=True)
+
+    # Add color legend
+    red_patch = mpatches.Patch(color='red', label='Not on main chain')
+    blue_patch = mpatches.Patch(color='lightblue', label='On main chain')
+    green_patch = mpatches.Patch(color='green', label='Confirmed')
+    plt.legend(handles=[red_patch, blue_patch, green_patch], loc='upper left')
+
     plt.savefig(path)
+
+def get_hash_for_visualization(hash, n=6):
+    """
+    it gets the first n-non-zero characters of a block hash. For visualization purpose only.
+    :param hash:
+    :param n:
+    :return:
+    """
+    hash_str = str(hash)
+    non_zero_str = hash_str[DIFFICULTY:]
+    first_n_non_zero_chars = non_zero_str.lstrip('0')[:n]
+    return first_n_non_zero_chars
+
+def checks_visualizations(text_list, check_list):
+    """
+
+    :param text_list: list of text
+    :param check_list: list of bool variables
+    :return: string to print
+    """
+    return_message = ""
+    for text, check in zip(text_list, check_list):
+        if check:
+            color_check = Colors.OKGREEN
+        else:
+            color_check = Colors.FAIL
+
+        return_message += Colors.BOLD + text + Colors.ENDC + ": " + color_check + str(check) + Colors.ENDC + "\n"
+    return return_message

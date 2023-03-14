@@ -10,8 +10,24 @@ class Block:
     """
     Dummy Bitcoin Block
     """
-    def __init__(self, hash, nonce, time, creation_time, previous_block=None, transactions=None, main_chain=True,
+    def __init__(self, hash, nonce, time, creation_time, height, previous_block=None, transactions=None, main_chain=True,
                  confirmed=False, merkle_root=None, next=[], mined_by=None, signature=None):
+        """
+
+        :param hash: str, block hash
+        :param nonce: int, number used once
+        :param time: int, timestamp of when the proof of work puzzle is solved
+        :param creation_time: int, how much time it took to create the block
+        :param height: int, block height
+        :param previous_block: str, hash of the previous block
+        :param transactions: list of Transaction objects
+        :param main_chain: bool, a block is always mined assuming its previous is in the main chain
+        :param confirmed: bool, a block is confirmed after 6 mined block appended after it (if on main_chain)
+        :param merkle_root: str, root of Merkle tree generated with transactions in the block
+        :param next: list of hashes, updated only when other blocks are mined.
+        :param mined_by: str, miner username
+        :param signature: sign(block hash) with miner's private key
+        """
         if transactions is None:
             transactions = []
         self.transactions = transactions
@@ -21,6 +37,7 @@ class Block:
         self.time = time # datetime.now().timestamp()
         self.creation_time = creation_time
         self.merkle_tree = self.create_merkle_tree()
+        self.height = height
         if merkle_root is None:
             self.merkle_root = self.merkle_tree.get_root()['hash']
         else:
@@ -28,7 +45,7 @@ class Block:
         self.main_chain = main_chain  # if False, block is in a forked branch
         self.confirmed = confirmed  # becomes True if main_chain and more than N_BLOCKS_PER_BRANCH
         self.next = next
-        self.mined_by = mined_by  # dictionary for block verification. {username : priv_k(self.hash)}
+        self.mined_by = mined_by
         self.signature = signature  # signature with miner private key of block hash
 
     def to_dict(self):
@@ -49,6 +66,7 @@ class Block:
             "confirmed": self.confirmed,
             "next": self.next,
             "mined_by": self.mined_by,
+            "height": self.height,
             "signature" : signature
         }
 
@@ -69,6 +87,7 @@ class Block:
             next=data['next'],
             merkle_root=data['merkle_root'],
             mined_by=data['mined_by'],
+            height=data["height"],
             signature=signature,
         )
 
@@ -210,7 +229,7 @@ class Blockchain:
         """
         b = self.chain[hash]
         b.main_chain = value
-        print(f'Block {hash[:8]} set to {value}')
+        # print(f'Block {hash[:8]} set to {value}')
         for n in b.next:
             self.visit_branch_update_main_chain(n, value)
 

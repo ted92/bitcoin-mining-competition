@@ -1,4 +1,4 @@
-DIFFICULTY = 5
+DIFFICULTY = 6
 USER_PATH = "../vis/users/"
 USER_FILE = "users.db"
 BLOCKCHAIN_PATH = "../vis/blockchain/"

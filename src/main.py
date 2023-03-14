@@ -11,6 +11,7 @@ Usage:
         -i [b, u]           : display information for blocks or users
         -t                  : request N transactions
         -m                  : mine a block
+        -d                  : request DIFFICULTY level
 """
 __author__ = "Enrico Tedeschi"
 __copyright__ = "Copyright (C) 2023 Enrico Tedeschi"
@@ -26,11 +27,11 @@ from datetime import datetime
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
 from utils.flask_utils import flask_call
-from server import BLOCK_PROPOSAL
+from server import BLOCK_PROPOSAL, REQUEST_DIFFICULTY
 
 def main(argv):
     try:
-        opts, args = getopt.getopt(argv, "hi:tm")
+        opts, args = getopt.getopt(argv, "hi:tmd")
         # print(f'opts : {opts}\nargs : {args}')
         valid_args = False
         for opt, arg in opts:
@@ -57,6 +58,10 @@ def main(argv):
             if opt == "-t":
                 # TODO: Implement GET_TXS
                 print("To be implemented ...")
+                valid_args = True
+            if opt == "-d":
+                response, difficulty, code = flask_call('GET', REQUEST_DIFFICULTY)
+                print(response)
                 valid_args = True
         if valid_args is False:
             print(__doc__)

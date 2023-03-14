@@ -298,13 +298,15 @@ request them from the server pool via the `REQUEST_TXS`
 endpoint. Additionally, they may employ GET requests
 such as `GET_USERS`, `GET_BLOCKCHAIN`, or `GET_DATABASE`
 endpoints in order to acquire network status, user data, and
-blockchain-related information.
+blockchain-related information. `REQUEST_DIFFICULTY` is
+already implemented.
 ```python
 BLOCK_PROPOSAL = 'block_proposal'
 GET_BLOCKCHAIN = 'get_blockchain'
 GET_USERS = 'get_users'
 REQUEST_TXS = 'request_txs'
 GET_DATABASE = 'get_database'
+REQUEST_DIFFICULTY = 'request_difficulty'
 ```
 Various endpoints can be accessed via a simple command-line
 interface (CLI) menu, which is detailed below. Alternatively,
@@ -318,6 +320,7 @@ Usage:
         -i [b, u]           : display information for blocks or users
         -t                  : request N transactions
         -m                  : mine a block
+        -d                  : request DIFFICULTY level
 """
 ```
 
@@ -333,8 +336,8 @@ The following are some examples:
 block_serialized = block.to_dict()
 msg, data, code = flask_call('POST', BLOCK_PROPOSAL, data=block_serialized)
 # unmarshal
-msg, block_serialized, code = flask_call('GET', BLOCK)
-block = Block.load_json(json.dumps(block_serialized))
+msg, block_serialized, code = flask_call('GET', BLOCK)  # Just an example, not an actual call
+block_deserialized = Block.load_json(json.dumps(block_serialized))
 ```
 
 ## Your Tasks

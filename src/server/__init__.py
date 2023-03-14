@@ -11,7 +11,7 @@ PORT = '8080'
 ADDRESS = '129.242.22.15'
 URL = 'https://' + ADDRESS + ':' + PORT + '/'
 
-SELF = 'enrico'  # TODO: insert your username here
+SELF = 'your_username'  # TODO: insert your username here
 
 # endpoints
 BLOCK_PROPOSAL = 'block_proposal'
@@ -19,3 +19,4 @@ GET_BLOCKCHAIN = 'get_blockchain'
 GET_USERS = 'get_users'
 REQUEST_TXS = 'request_txs'
 GET_DATABASE = 'get_database'
+REQUEST_DIFFICULTY = 'request_difficulty'

@@ -28,11 +28,13 @@ from datetime import datetime
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
 from utils.flask_utils import flask_call
-from server import BLOCK_PROPOSAL, REQUEST_DIFFICULTY
+from abstractions.block import Blockchain
+from server import BLOCK_PROPOSAL, REQUEST_DIFFICULTY, GET_BLOCKCHAIN
+from utils.view import visualize_blockchain, visualize_blockchain_terminal
 
 def main(argv):
     try:
-        opts, args = getopt.getopt(argv, "hi:tmd")
+        opts, args = getopt.getopt(argv, "hi:tmdv:")
         # print(f'opts : {opts}\nargs : {args}')
         valid_args = False
         for opt, arg in opts:

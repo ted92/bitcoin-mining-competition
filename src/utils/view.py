@@ -139,6 +139,7 @@ def visualize_blockchain(blocks, path="../vis/blockchain/blockchain.pdf", n_bloc
     plt.legend(handles=[red_patch, blue_patch, green_patch], loc='upper left')
 
     plt.savefig(path)
+    print(Colors.BOLD + "blockchain saved " + Colors.ENDC + "in : " + Colors.OKGREEN + f"{path}" + Colors.ENDC)
 
 def get_hash_for_visualization(hash, n=6):
     """

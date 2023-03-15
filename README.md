@@ -47,9 +47,9 @@ transactions across the network. This makes blockchains resistant
 to modification and ensures the integrity of the data they contain.
 
 The most well-known consensus
-mechanisms are Proof of Work (Bitcoin), Proof of Stake
-(Ethereum, Avalanche), BFT blockchains (Algorand, Ripple Stellar),
-and Proof of Storage (Filecoin).
+mechanisms are Proof of Work [1] (Bitcoin), Proof of Stake [2-3]
+(Ethereum, Avalanche), BFT blockchains [5] (Algorand, Ripple Stellar),
+and Proof of Storage [6] (Filecoin).
 In a Proof of Work system, miners compete to solve complex
 mathematical problems to validate transactions and add new
 blocks to the blockchain. Proof of Stake, on the other hand,

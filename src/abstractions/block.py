@@ -242,27 +242,27 @@ class Blockchain:
         from server import N_BLOCKS_PER_BRANCH
         for k in self.chain:
             b = self.chain[k]
-            if not b.confirmed:  # the chain can become false only if block has not being confirmed yet todo: test this if statement
+            if not b.confirmed:  # the chain can become false only if block has not being confirmed yet
                 if len(b.next) > 1:  # if fork
                     hashes = b.next
                     count_branches = []
-                    max_value = 0
+                    longest_branch = 0
                     hash = None
                     # count blocks for each branch
                     for h in hashes:
                         c = count_blocks_per_branch(self.chain, h)
                         count_branches.append(c)
                         # get longest branch
-                        if c[h] > max_value:
-                            max_value = c[h]
+                        if c[h] > longest_branch:
+                            longest_branch = c[h]
                             hash = h
-                        elif c[h] == max_value:
+                        elif c[h] == longest_branch:
                             # branches are equal
                             hash = None
                         else:
                             pass
                     if hash is not None:
-                        if max_value > N_BLOCKS_PER_BRANCH:
+                        if longest_branch > N_BLOCKS_PER_BRANCH:
                             # change main_chain values
                             for c in count_branches:
                                 for h, v in zip(c.keys(), c.values()):
@@ -272,6 +272,21 @@ class Blockchain:
                                     else:
                                         # main chain
                                         self.visit_branch_update_main_chain(h, True)
+            else:
+                # block is confirmed check successors
+                confirmed_successor = None
+                hash_confirmed_successor = None
+                for hash_successor in b.next:
+                    successor = self.chain[hash_successor]
+                    if successor.confirmed:
+                        # found confirmed successor
+                        confirmed_successor = successor
+                        hash_confirmed_successor = confirmed_successor.hash
+                if confirmed_successor:
+                    for hash_successor in b.next:
+                        if hash_successor != hash_confirmed_successor:
+                            # found another branch, set main_chain to false
+                            self.visit_branch_update_main_chain(hash_successor, False)
 
 
 def count_blocks_per_branch(blockchain, start_hash_branch):

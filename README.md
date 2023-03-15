@@ -328,7 +328,7 @@ By executing the command `main.py -v b`, it is possible to retrieve
 the latest blockchain state in a graphical format. In case the
 visualization seems unclear, one can refresh it to obtain a better
 representation. This is an example of the generated pdf:
-![img.png](img.png)
+![img.png](blockchain.png)
 
 
 ### Object Serialization

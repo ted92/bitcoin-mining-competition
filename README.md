@@ -53,8 +53,15 @@ and Proof of Storage [6] (Filecoin).
 In a Proof of Work system, miners compete to solve complex
 mathematical problems to validate transactions and add new
 blocks to the blockchain. Proof of Stake, on the other hand,
-involves validators being chosen based on their ownership of
-the blockchain's native cryptocurrency. Finally, Proof of Storage
+instead of miners involves validators being chosen based on
+their ownership of the native cryptocurrency of the blockchain.
+This reduces the energy consumption and hardware requirements
+compared to Proof of Work. In a Byzantine Fault Tolerant
+blockchain, nodes in the network must reach a consensus on the
+state of the blockchain even in the presence of faulty or
+malicious nodes. Such consensus algorithms typically involve
+a higher degree of redundancy and communication overhead compared
+to Proof of Work or Proof of Stake. Finally, Proof of Storage
 requires users to prove that they have stored data reliably and
 for a specific amount of time. Each consensus mechanism has its
 own strengths and weaknesses, and the choice of mechanism can

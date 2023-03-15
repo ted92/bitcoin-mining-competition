@@ -1,4 +1,6 @@
 # INF-3203 A2 : Bitcoin Mining Competition
+
+### DEADLINE on 12/04/23 23.59
 Bitcoin is a decentralized digital currency that has revolutionized 
 the way we think about money and financial transactions. One of the
 key features that sets Bitcoin apart from traditional currency is

@@ -14,7 +14,7 @@ and widely used digital currencies in the world, and has paved
 the way for a new era of decentralized finance and innovation.
 
 ### Goal
-This assignment entails the task of mining a Bitcoin block in
+This assignment entails the task of mining Bitcoin blocks in
 accordance with the guidelines of the Proof of Work protocol.
 To maintain the focus of this assignment, the use of a p2p
 network substrate has been excluded to avoid unnecessary issues.
@@ -30,12 +30,9 @@ of 2-3 people.
 ## Background
 The following section contains pertinent information regarding
 blockchain and Proof of Work. If you are not familiar with
-such concepts, please read it thoroughly. A recommended paper
-is listed below [1].
+such concepts, please read it thoroughly. A list recommended papers
+is listed below [1-6].
 
-as well as details on the structure
-of the assignment and pre-code. It is recommended that
-this information be read thoroughly.
 ### Blockchains
 A blockchain is a distributed digital ledger of transactions that
 is maintained by a network of computers, rather than a central

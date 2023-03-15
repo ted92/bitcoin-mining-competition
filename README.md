@@ -324,6 +324,12 @@ Usage:
         -d                  : request DIFFICULTY level
 """
 ```
+By executing the command `main.py -v b`, it is possible to retrieve
+the latest blockchain state in a graphical format. In case the
+visualization seems unclear, one can refresh it to obtain a better
+representation. This is an example of the generated pdf:
+![img.png](img.png)
+
 
 ### Object Serialization
 Embedded within each class abstraction are methods for marshaling
@@ -363,6 +369,9 @@ for the report) so to handle and understand the
 4) Implement **Merkle tree** structure in `src/backbone/merkle.py`;
 5) Implement the consensus mechanism **Proof of Work**
 in `src/backbone/consensus.py`. Command `python main.py -m`;
+7) Propose a criterion or algorithm for the selection of
+parent and mining of blocks that minimizes the likelihood
+of orphaning or inclusion in the less successful branch of the blockchain.
 
 Note that the `hash_function()` is used for verification server-side in
 the Merkle tree, while `double_hash()` is used for Proof of Work.

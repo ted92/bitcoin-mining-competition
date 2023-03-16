@@ -5,6 +5,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from prettytable import PrettyTable
 import matplotlib.patches as mpatches
+from datetime import datetime
 
 class Colors:
     """
@@ -71,21 +72,32 @@ def visualize_blockchain_terminal(blocks, n_blocks=15):
     """
     # Create a new table
     table = PrettyTable()
-    table.field_names = ["Block", "Prev Hash", "Nonce", "Time", "Creation Time", "Mined By", "Color", "Difficulty"]
+    table.field_names = ["Block", "Prev Hash", "Nonce", "Time", "Creation Time (s)", "Mined By", "Difficulty"]
 
     # Add the last ten blocks to the table
     last_ten_blocks = blocks[-n_blocks:]
     for b in last_ten_blocks:
-        node_color = 'red'
+        timestamp = datetime.fromtimestamp(b.time)
+        # Format the datetime object as dd-mm-yy : hh:mm:ss
+        formatted_time = timestamp.strftime('%d-%m-%y : %H:%M:%S')
+        node_color = '\033[91m'  # Red
         if b.main_chain:
-            node_color = 'lightblue'
+            node_color = '\033[94m'  # Light blue
             if b.confirmed:
-                node_color = 'green'
-        table.add_row([get_hash_for_visualization(b.hash), get_hash_for_visualization(b.prev), b.nonce, b.time,
-                       b.creation_time, b.mined_by, node_color, get_difficulty_from_hash(b.hash)])
+                node_color = '\033[92m'  # Green
+        reset_color = '\033[0m'
+        table.add_row([node_color + str(get_hash_for_visualization(b.hash)) + reset_color,
+                       node_color + str(get_hash_for_visualization(b.prev)) + reset_color,
+                       node_color + str(b.nonce) + reset_color,
+                       node_color + formatted_time + reset_color,
+                       node_color + str(b.creation_time) + reset_color,
+                       node_color + b.mined_by + reset_color,
+                       node_color + str(get_difficulty_from_hash(b.hash)) + reset_color])
 
     # Print the table
     print(table)
+
+
 
 def get_difficulty_from_hash(hash):
     """
@@ -155,7 +167,7 @@ def get_hash_for_visualization(hash, n=6):
 
 def checks_visualizations(text_list, check_list):
     """
-
+    visualize checks for block proposal
     :param text_list: list of text
     :param check_list: list of bool variables
     :return: string to print

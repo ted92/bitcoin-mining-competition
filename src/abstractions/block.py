@@ -206,20 +206,6 @@ class Blockchain:
             else:
                 return False
 
-    def find_forks(self):
-        """
-        find all the forked branches in the blockchain
-        :return: dictionary {'hash' : <number of blocks pointing at it>}
-        """
-        prev_hash_dict = dict()
-        for k in self.chain:
-            p_hash = self.chain[k].prev
-            if p_hash in prev_hash_dict:
-                prev_hash_dict[p_hash] += 1
-            else:
-                prev_hash_dict[p_hash] = 1
-            return prev_hash_dict
-
     def visit_branch_update_main_chain(self, hash, value=False):
         """
         recursively traverse the blockchain and update the main_chain value

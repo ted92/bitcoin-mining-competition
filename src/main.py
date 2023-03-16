@@ -70,8 +70,8 @@ def main(argv):
                     if blockchain:
                         b_chain = Blockchain.load_json(json.dumps(blockchain))
                         # saves the blockchain as pdf in "vis/blockchain/blockchain.pdf"
-                        visualize_blockchain(b_chain.block_list, n_blocks=20)
-                        visualize_blockchain_terminal(b_chain.block_list, n_blocks=20)
+                        visualize_blockchain(b_chain.block_list, n_blocks=40)
+                        visualize_blockchain_terminal(b_chain.block_list, n_blocks=40)
                     valid_args = True
             if opt == "-d":
                 response, difficulty, code = flask_call('GET', REQUEST_DIFFICULTY)

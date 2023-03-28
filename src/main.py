@@ -74,8 +74,9 @@ def main(argv):
                         visualize_blockchain_terminal(b_chain.block_list, n_blocks=40)
                     valid_args = True
             if opt == "-d":
-                response, difficulty, code = flask_call('GET', REQUEST_DIFFICULTY)
+                response, table, code = flask_call('GET', REQUEST_DIFFICULTY)
                 print(response)
+                print(table)
                 valid_args = True
         if valid_args is False:
             print(__doc__)

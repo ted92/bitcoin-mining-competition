@@ -130,7 +130,7 @@ into a single hash.
              /          \
         H1=h(t1+t2)     H2=h(t3+t4)
         /        \      /        \
-       t1        t2    t3        t4
+      h(t1)    h(t2)  h(t3)     h(t4)
 
 A Merkle tree works by recursively hashing (`h` function in
 the graph above) pairs of transactions together until a

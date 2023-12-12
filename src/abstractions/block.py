@@ -206,18 +206,24 @@ class Blockchain:
             else:
                 return False
 
-    def visit_branch_update_main_chain(self, hash, value=False):
+    def visit_branch_update_main_chain(self, hash, value=False, visited=None):
         """
         recursively traverse the blockchain and update the main_chain value
         :param hash: starting block hash
         :param value
+        :param visited: set of visited block hashes
         :return:
         """
+        if visited is None:
+            visited = set()
+        if hash in visited:
+            # block has already been visited, exit recursion
+            return
+        visited.add(hash)
         b = self.chain[hash]
         b.main_chain = value
-        # print(f'Block {hash[:8]} set to {value}')
         for n in b.next:
-            self.visit_branch_update_main_chain(n, value)
+            self.visit_branch_update_main_chain(n, value, visited)
 
     def confirm_chain(self):
         """

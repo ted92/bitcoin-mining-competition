@@ -29,7 +29,7 @@ from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
 from utils.flask_utils import flask_call
 from abstractions.block import Blockchain
-from server import BLOCK_PROPOSAL, REQUEST_DIFFICULTY, GET_BLOCKCHAIN
+from server import BLOCK_PROPOSAL, REQUEST_DIFFICULTY, GET_BLOCKCHAIN, ADDRESS, PORT
 from utils.view import visualize_blockchain, visualize_blockchain_terminal
 
 def main(argv):

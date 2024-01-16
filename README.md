@@ -1,6 +1,6 @@
-# INF-3203 A2 : Bitcoin Mining Competition
+# INF-3203 A1 : Bitcoin Mining Competition
 
-### DEADLINE on 12/04/23 23.59
+### DEADLINE on 15/02/24 23.59
 Bitcoin is a decentralized digital currency that has revolutionized 
 the way we think about money and financial transactions. One of the
 key features that sets Bitcoin apart from traditional currency is
@@ -250,14 +250,15 @@ features before executing the `main.py` script:
 1) Students are expected to form groups consisting of 2-3
 members and choose a **username**. It is requested that a
 list of usernames, along with the corresponding participating
-students, be sent to [enrico.tedeschi@uit.no](mailto:enrico.tedeschi@uit.no)
-as soon as possible. The username should be identical to the
-institutional username (e.g. abc123).
+students, be sent to [mohsin.khan@uit.no](mailto:mohsin.khan@uit.no)
+or [dominik.thamm@uit.no](mailto:dominik.thamm@uit.no)
+as soon as possible. In order to avoid confusions, the username
+should be identical to the institutional username (e.g. abc123).
 2) The aforementioned username should then be replaced in
 `src/server/__init__.py` within the `SELF` constant (e.g.
 `SELF = 'abc123'`).
 3) The public and private keys must be saved in the `vis/users/` directory.
-4) Verify that the `ADDRESS` constant is set to `129.242.22.15`,
+4) Verify that the `ADDRESS` constant is set to `129.242.16.49`,
 which is the server address.
 5) You can run the script `main.py` by running it from the `src/` directory.
 You can start running the command `python main.py -h`, to check all available
@@ -274,7 +275,8 @@ been confirmed (after a period of 6 blocks), the reward will
 be granted to the user.
 
 To get your public/private keys, you need to send your group
-username as specified earlier to [enrico.tedeschi@uit.no](mailto:enrico.tedeschi@uit.no).
+username as specified earlier to [mohsin.khan@uit.no](mailto:mohsin.khan@uit.no)
+or [dominik.thamm@uit.no](mailto:dominik.thamm@uit.no).
 Once the private and public keys have been acquired and
 saved in `vis/users/`, the candidate shall implement and read
 the server's reply to `GET_USERS` call so that `python main.py -i u` returns:
@@ -363,7 +365,8 @@ their attempts and provide an explanation in their report.
 ### Code
 Upon downloading the code from [here](https://github.com/ted92/bitcoin-mining-competition), the
 candidate is required to perform the following tasks:
-1) Send their username to [enrico.tedeschi@uit.no](mailto:enrico.tedeschi@uit.no)
+1) Send their username to [mohsin.khan@uit.no](mailto:mohsin.khan@uit.no)
+or [dominik.thamm@uit.no](mailto:dominik.thamm@uit.no)
 to obtain the public and private keys.
 2) Familiarize themselves with the code and interact
 with the server by implementing and managing basic
@@ -424,8 +427,9 @@ that affect scalability and explore potential solutions to address
 these limitations.
 
 Wishing you the best of luck! If you have any inquiries, please
-feel free to contact me via email at
-[enrico.tedeschi@uit.no](mailto:enrico.tedeschi@uit.no) or visit
+feel free to contact us via email at
+[mohsin.khan@uit.no](mailto:mohsin.khan@uit.no)
+or [dominik.thamm@uit.no](mailto:dominik.thamm@uit.no) or visit
 me at my office in A214.
 
 ## References
@@ -441,6 +445,7 @@ me at my office in A214.
 [Available here](https://dl.acm.org/doi/abs/10.1145/3132747.3132757)
 
 [6] Benet, J. (2017). Filecoin: A Decentralized Storage Network. [Available here](https://filecoin.io/filecoin.pdf)
+
 ## Authors
 
 * **Enrico Tedeschi** - *INF-3203* - [bitcoin-mining-competition](https://github.com/ted92/bitcoin-mining-competition)

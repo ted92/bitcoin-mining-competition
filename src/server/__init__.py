@@ -8,7 +8,7 @@ KEY_PAIRS_DICT = "user_keys.pkl"
 
 # network
 PORT = '8080'
-ADDRESS = '129.242.22.15'
+ADDRESS = 'ete011@inf3203.cs.uit.no'
 URL = 'https://' + ADDRESS + ':' + PORT + '/'
 
 SELF = 'your_username'  # TODO: insert your username here

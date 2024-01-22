@@ -258,8 +258,7 @@ should be identical to the institutional username (e.g. abc123).
 `src/server/__init__.py` within the `SELF` constant (e.g.
 `SELF = 'abc123'`).
 3) The public and private keys must be saved in the `vis/users/` directory.
-4) Verify that the `ADDRESS` constant is set to `129.242.16.49`,
-which is the server address.
+4) Verify that the `ADDRESS` is set to `ete011@inf3203.cs.uit.no`.
 5) You can run the script `main.py` by running it from the `src/` directory.
 You can start running the command `python main.py -h`, to check all available
 commands.

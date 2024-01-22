@@ -4,7 +4,7 @@ enrico.tedeschi@uit.no
 
 INF 3203 - Advanced Distributed Systems
 
-Assignment 2 - Blockchain Mining Competition
+Assignment 1 - Blockchain Mining Competition
 
 Usage:
         -h                  : display usage information

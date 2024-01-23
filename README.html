@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="inf-3203-a1--bitcoin-mining-competition">INF-3203 A1 : Bitcoin Mining Competition</h1>
+<h3 id="deadline-on-150224-2359">DEADLINE on 15/02/24 23.59</h3>
+<p>Bitcoin is a decentralized digital currency that has revolutionized
+the way we think about money and financial transactions. One of the
+key features that sets Bitcoin apart from traditional currency is
+its use of a technology called blockchain, which allows for secure
+and transparent transactions without the need for a central authority.
+At the heart of the Bitcoin system is the concept of Proof of Work,
+a computational algorithm that ensures the security and integrity
+of the blockchain. In this process, miners compete to solve complex
+mathematical problems in order to add new blocks to the blockchain,
+and are rewarded with newly created bitcoins for their efforts.
+The use of Proof of Work has made Bitcoin one of the most secure
+and widely used digital currencies in the world, and has paved
+the way for a new era of decentralized finance and innovation.</p>
+<h3 id="goal">Goal</h3>
+<p>This assignment entails the task of mining Bitcoin blocks in
+accordance with the guidelines of the Proof of Work protocol.
+To maintain the focus of this assignment, the use of a p2p
+network substrate has been excluded to avoid unnecessary issues.
+Instead, each candidate will act as a client, and a server will
+be at your disposal for block verification. The process of mining
+a block in the Bitcoin blockchain is associated with a reward
+in the form of Bitcoin. At the culmination of the competition,
+the participant with the highest number of successfully mined
+blocks will be recognized as the winner, but be careful of
+not melting your GPUs! For this task, you have to work in groups
+of 2-3 people.</p>
+<h2 id="background">Background</h2>
+<p>The following section contains pertinent information regarding
+blockchain and Proof of Work. If you are not familiar with
+such concepts, please read it thoroughly. A list recommended papers
+is listed below [1-6].</p>
+<h3 id="blockchains">Blockchains</h3>
+<p>A blockchain is a distributed digital ledger of transactions that
+is maintained by a network of computers, rather than a central
+authority. It is a continuously growing list of blocks, each
+containing a timestamp and a cryptographic link to the previous block, forming
+a chain of blocks hence the name &quot;blockchain&quot;. Once recorded,
+the data in any given block cannot be altered retroactively
+without the alteration of all subsequent blocks, which requires
+consensus of the network majority. Blockchains utilize different
+types of consensus mechanisms to reach agreement and validate
+transactions across the network. This makes blockchains resistant
+to modification and ensures the integrity of the data they contain.</p>
+<p>The most well-known consensus
+mechanisms are Proof of Work [1] (Bitcoin), Proof of Stake [2-3]
+(Ethereum, Avalanche), BFT blockchains [5] (Algorand, Ripple Stellar),
+and Proof of Storage [6] (Filecoin).
+In a Proof of Work system, miners compete to solve complex
+mathematical problems to validate transactions and add new
+blocks to the blockchain. Proof of Stake, on the other hand,
+instead of miners involves validators being chosen based on
+their ownership of the native cryptocurrency of the blockchain.
+This reduces the energy consumption and hardware requirements
+compared to Proof of Work. In a Byzantine Fault Tolerant
+blockchain, nodes in the network must reach a consensus on the
+state of the blockchain even in the presence of faulty or
+malicious nodes. Such consensus algorithms typically involve
+a higher degree of redundancy and communication overhead compared
+to Proof of Work or Proof of Stake. Finally, Proof of Storage
+requires users to prove that they have stored data reliably and
+for a specific amount of time. Each consensus mechanism has its
+own strengths and weaknesses, and the choice of mechanism can
+significantly impact the security, efficiency, and scalability
+of the blockchain network.
+This assignment is predicated on the largest operational blockchain,
+namely Bitcoin, which relies on a consensus mechanism based on the
+Proof of Work algorithm.</p>
+<h3 id="proof-of-work">Proof of Work</h3>
+<p>Proof of Work is the consensus mechanism used by Bitcoin.
+The basic idea behind Proof of
+Work is to require participants, called miners, to perform a
+computationally intensive task in order to create a new block
+of transactions on the blockchain. This task is designed to be
+difficult, requiring a significant amount of computational power
+and energy, in order to ensure that the miner has expended real
+resources and has a legitimate interest in maintaining the
+integrity of the network. Once a miner has completed the task,
+they broadcast the new block to the network, and other nodes on
+the network can verify the Proof of Work and add the block to
+their own copy of the blockchain. Miners are incentivized to
+participate in the process through a reward system, typically
+in the form of newly created cryptocurrency that is awarded to
+the miner who successfully creates a new block. To elaborate,
+a miner's task is to perform double hashing on the block header,
+consisting of the previous block hash, timestamp, and Merkle root,
+together with a nonce. This process continues until the hash falls
+below the specified target, which is also known as difficulty.
+The miner increments the nonce until a matching hash is discovered.</p>
+<pre><code>+----------------+
+|  Block Header  | &lt;--- Previous Block Hash + Timestamp + Merkle Root
++----------------+
+        |
+        |        +---------------+       +-------------+       +-------------------+
+        + ------&gt;|  Double Hash  |------&gt;|  is valid?  |--YES-&gt;|  reward 6.25 BTC  |
+        |        +---------------+       +-------------+       +-------------------+
+        |                                       |
++----------------+                              |
+|     Nonce      |&lt;------------ +1 ------------ NO
++----------------+
+</code></pre>
+<h3 id="merkle-tree">Merkle Tree</h3>
+<p>The security of the Proof of Work lies in the fact that each
+new block's hash is computed using a cryptographic function
+that incorporates the root of a Merkle tree, which consists
+of all the transactions within the block.</p>
+<p>In the context of Proof of Work, a Merkle tree is a data
+structure used to efficiently summarize all the transactions
+(<code>t1, t2, t3, t4</code> in the graph below)
+included in a block. In Bitcoin, for example, every block contains
+a list of transactions, and in order to perform Proof of Work,
+miners must hash the block header along with a nonce value until
+a suitable hash is found. Instead of hashing every transaction
+in the block individually, which can be time-consuming and
+inefficient, a Merkle tree is used to aggregate all the transactions
+into a single hash.</p>
+<pre><code>          R=h(H1+H2)
+         /          \
+    H1=h(t1+t2)     H2=h(t3+t4)
+    /        \      /        \
+  h(t1)    h(t2)  h(t3)     h(t4)
+</code></pre>
+<p>A Merkle tree works by recursively hashing (<code>h</code> function in
+the graph above) pairs of transactions together until a
+single hash value is obtained, known as the Merkle
+root (<code>R</code> in the graph). The Merkle root is then included in
+the block header along with other information such as the timestamp,
+nonce, and previous block hash. By including the Merkle root in the
+block header, it is possible to prove that a particular transaction
+is included in the block without having to include the entire list
+of transactions. This is useful for verifying the validity of a
+block without having to download and process all the transactions
+included in it, which can save time and computing resources.</p>
+<p>In summary, the Merkle tree is a key component of the Proof of
+Work consensus mechanism because it allows for efficient
+verification of the transactions included in a block, which
+in turn enables miners to perform Proof of Work more efficiently.</p>
+<h2 id="getting-started">Getting Started</h2>
+<p>This section offers a comprehensive elucidation of the pre-code
+structure, the necessary prerequisites for executing it, and
+detailed instructions on how to run it. Additionally, it
+includes illustrative examples of runtime instances.</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<p>While the code has been developed in <code>Python 3.7.9</code>,
+it is expected to be compatible with any subsequent versions
+without issues. The <code>requirements.txt</code> file contains a
+list of all the necessary packages and libraries required
+to execute the code. It is strongly recommended using a
+virtual environment when working with this project.
+To create a new virtual environment, you can run the following command:</p>
+<pre class="hljs"><code><div>python -m venv my_venv
+</div></code></pre>
+<p>After creating the virtual environment, activate it using:</p>
+<pre class="hljs"><code><div>source my_venv/bin/activate
+</div></code></pre>
+<p>Once you have activated the virtual environment, you can proceed
+to install the required packages by running:</p>
+<pre class="hljs"><code><div>pip install -r requirements.txt
+</div></code></pre>
+<h3 id="structure">Structure</h3>
+<p>The code functions as a simple Client/Server application,
+utilizing <code>Flask 2.2.2</code> as a lightweight web application
+framework for facilitating Client/Server communication,
+while <code>SQLite3</code> serves as a relational database management
+system that is employed for the purpose of storing user-related
+data. The client is able to establish a connection and communicate
+with the server by utilizing pre-defined API endpoints. This allows
+the user to perform local block mining, and subsequently submit
+the block to the server for verification. Additionally, the API
+endpoints provide functionality for retrieving information pertaining
+to the current status of the blockchain, user data, and visualization
+tools that enable the monitoring of the competition's progression.</p>
+<h3 id="pre-code">Pre-code</h3>
+<p>Download the pre-code <a href="https://github.com/ted92/bitcoin-mining-competition">here</a>
+and acquaint yourself with its structure. The scripts and
+folders are depicted below for your reference (#TODO are the scripts you can/should edit):</p>
+<pre class="hljs"><code><div>.
+├── README.md
+├── requirements.txt
+├── src
+│   ├── abstractions
+│   │   ├── block.py
+│   │   ├── transaction.py
+│   │   └── user.py
+│   ├── backbone
+│   │   ├── consensus.py--#TODO
+│   │   └── merkle.py-----#TODO
+│   ├── main.py-----------#TODO
+│   ├── server
+│   │   └── __init__.py---#TODO
+│   └── utils
+│       ├── conversions.py
+│       ├── cryptographic.py
+│       ├── flask_utils.py
+│       └── view.py
+└── vis
+    ├── blockchain
+    │   └── blockchain.pkl
+    └── users
+        ├── user_pbk.pem
+        ├── user_pvk.pem
+        └── users.db
+</div></code></pre>
+<p>The <code>src</code> directory contains all the pre-existing code required
+for the project.</p>
+<ul>
+<li>The <code>abstractions</code> subdirectory contains data structures that
+represent blocks, transactions, and users. These scripts are not
+to be altered.</li>
+<li>The <code>backbone</code> subdirectory contains scripts related to consensus
+and the Merkle tree for transactions. It is the responsibility of
+the candidate to <strong>implement the backbone</strong> of the blockchain, which
+includes the Proof of Work and the Merkle tree.</li>
+<li>The <code>server</code> subdirectory only requires the importation of
+constants and Flask calls to the server.</li>
+<li>The <code>utils</code> subdirectory contains essential scripts that enable
+Client/Server communication, the visualization of users, blocks,
+and blockchains, and the cryptographic functions that the <strong>candidate
+must utilize</strong> to have their block verified.</li>
+<li><code>main.py</code> is the script to run.</li>
+</ul>
+<p>The <code>vis</code> directory stores data that is useful for visualizing
+the project's execution at runtime.</p>
+<ul>
+<li>The <code>blockchain</code> subdirectory stores a pickle representation
+of the blockchain, which the candidate should become familiar with.</li>
+<li>The <code>users</code> subdirectory houses both the user database and the
+public/private key of a specific client.</li>
+</ul>
+<h2 id="running-the-code">Running the Code</h2>
+<p>It is imperative to configure and adjust several key
+features before executing the <code>main.py</code> script:</p>
+<ol>
+<li>Students are expected to form groups consisting of 2-3
+members and choose a <strong>username</strong>. It is requested that a
+list of usernames, along with the corresponding participating
+students, be sent to <a href="mailto:mohsin.khan@uit.no">mohsin.khan@uit.no</a>
+or <a href="mailto:dominik.thamm@uit.no">dominik.thamm@uit.no</a>
+as soon as possible. In order to avoid confusions, the username
+should be identical to the institutional username (e.g. abc123).</li>
+<li>The aforementioned username should then be replaced in
+<code>src/server/__init__.py</code> within the <code>SELF</code> constant (e.g.
+<code>SELF = 'abc123'</code>).</li>
+<li>The public and private keys must b e saved in the <code>vis/users/</code> directory.</li>
+<li>Verify that the <code>ADDRESS</code> is set to <code>ete011@inf3203.cs.uit.no</code>.</li>
+<li>You can run the script <code>main.py</code> by running it from the <code>src/</code> directory.
+You can start running the command <code>python main.py -h</code>, to check all available
+commands.</li>
+</ol>
+<h3 id="get-your-privatepublic-keys">Get your Private/Public keys</h3>
+<p>In this particular blockchain implementation, verification is
+carried out utilizing the <code>rsa</code> framework. It is required that
+each transaction is signed using the sender's private key,
+and subsequently verified using the sender's public key by the
+recipient. The public/private key pair also plays a crucial
+role in signing the block that has been recently mined with
+the corresponding username. By doing so, once the block has
+been confirmed (after a period of 6 blocks), the reward will
+be granted to the user.</p>
+<p>To get your public/private keys, you need to send your group
+username as specified earlier to <a href="mailto:mohsin.khan@uit.no">mohsin.khan@uit.no</a>
+or <a href="mailto:dominik.thamm@uit.no">dominik.thamm@uit.no</a>.
+Once the private and public keys have been acquired and
+saved in <code>vis/users/</code>, the candidate shall implement and read
+the server's reply to <code>GET_USERS</code> call so that <code>python main.py -i u</code> returns:</p>
+<pre class="hljs"><code><div>+-------------------------------------------------------------------------------------+
+|                                     Users INFO                                      |
++----------+---------+---------------+--------------+------------------+--------------+
+| username | address | balance (BTC) | mined blocks | confirmed blocks | reward (BTC) |
++----------+---------+---------------+--------------+------------------+--------------+
+|  enrico  | cf14e63 |     1000.0    |      2       |        0         |      0.0     |
+|   aril   | e6586e7 |     1000.0    |      0       |        0         |      0.0     |
++----------+---------+---------------+--------------+------------------+--------------+
+</div></code></pre>
+<p>The candidate is advised to
+familiarize themselves with the <code>sign</code> and <code>verification</code>
+implementations that are utilized from the <code>User</code> class.</p>
+<h3 id="api-endpoints">API endpoints</h3>
+<p>The callable endpoints, which are located in the
+<code>src/server/__init__.py</code> file, are listed below.
+It is expected that the candidate will implement a
+POST request using <code>BLOCK_PROPOSAL</code> for mining,
+and will either generate their own transactions
+(it is worth noting that a user can only generate
+transactions with itself as sender) or
+request them from the server pool via the <code>REQUEST_TXS</code>
+endpoint. Additionally, they may employ GET requests
+such as <code>GET_USERS</code>, <code>GET_BLOCKCHAIN</code>, or <code>GET_DATABASE</code>
+endpoints in order to acquire network status, user data, and
+blockchain-related information. <code>REQUEST_DIFFICULTY</code> is
+already implemented.</p>
+<pre class="hljs"><code><div>BLOCK_PROPOSAL = <span class="hljs-string">'block_proposal'</span>
+GET_BLOCKCHAIN = <span class="hljs-string">'get_blockchain'</span>
+GET_USERS = <span class="hljs-string">'get_users'</span>
+REQUEST_TXS = <span class="hljs-string">'request_txs'</span>
+GET_DATABASE = <span class="hljs-string">'get_database'</span>
+REQUEST_DIFFICULTY = <span class="hljs-string">'request_difficulty'</span>
+</div></code></pre>
+<p>Various endpoints can be accessed via a simple command-line
+interface (CLI) menu, which is detailed below. Alternatively,
+by executing the command <code>main.py -h</code>, a list of different
+options will be presented. In order to avoid relative folder
+paths issues, execute the code from <code>src/</code> directory.</p>
+<pre class="hljs"><code><div><span class="hljs-string">"""
+Usage:
+        -h                  : display usage information
+        -i [b, u]           : display information for blocks or users   #TODO
+        -t                  : request N transactions                    #TODO
+        -m                  : mine a block                              #TODO
+        -v b                : visualize blockchain, saved to vis/blockchain/blockchain.pdf
+        -d                  : request DIFFICULTY level
+"""</span>
+</div></code></pre>
+<p>By executing the command <code>main.py -v b</code>, it is possible to retrieve
+the latest blockchain state in a graphical format. In case the
+visualization seems unclear, one can refresh it to obtain a better
+representation. This is an example of the generated pdf:
+<img src="blockchain.png" alt="img.png"></p>
+<h3 id="object-serialization">Object Serialization</h3>
+<p>Embedded within each class abstraction are methods for marshaling
+and unmarshaling, which facilitate the exportation of object
+instances in memory to other machines. These methods are
+implemented as <code>to_dict()</code> and <code>load_json()</code>. To initiate a
+server request, the <code>flask_call()</code> function can be utilized.
+The following are some examples:</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># marshal</span>
+block_serialized = block.to_dict()
+msg, data, code = flask_call(<span class="hljs-string">'POST'</span>, BLOCK_PROPOSAL, data=block_serialized)
+<span class="hljs-comment"># unmarshal</span>
+msg, block_serialized, code = flask_call(<span class="hljs-string">'GET'</span>, BLOCK)  <span class="hljs-comment"># Just an example, not an actual call</span>
+block_deserialized = Block.load_json(json.dumps(block_serialized))
+</div></code></pre>
+<h2 id="your-tasks">Your Tasks</h2>
+<p>In order to successfully complete this assignment,
+the candidate must complete both practical and theoretical
+tasks. If the minimum requirements are not met, the candidate
+must provide a comprehensive explanation. If the candidate
+encounters difficulties with coding, they should document
+their attempts and provide an explanation in their report.</p>
+<h3 id="code">Code</h3>
+<p>Upon downloading the code from <a href="https://github.com/ted92/bitcoin-mining-competition">here</a>, the
+candidate is required to perform the following tasks:</p>
+<ol>
+<li>Send their username to <a href="mailto:mohsin.khan@uit.no">mohsin.khan@uit.no</a>
+or <a href="mailto:dominik.thamm@uit.no">dominik.thamm@uit.no</a>
+to obtain the public and private keys.</li>
+<li>Familiarize themselves with the code and interact
+with the server by implementing and managing basic
+client-side responses with API calls of <code>GET_BLOCKCHAIN</code>
+and <code>GET_USERS</code>. Commands <code>python main.py -i [b, u]</code>;</li>
+<li>Learn about Proof of Work and Merkle trees (useful
+for the report) so to handle and understand the
+<code>REQUEST_TXS</code> calls for mining new blocks. Command <code>python main.py -t</code>;</li>
+<li>Implement <strong>Merkle tree</strong> structure in <code>src/backbone/merkle.py</code>;</li>
+<li>Implement the consensus mechanism <strong>Proof of Work</strong>
+in <code>src/backbone/consensus.py</code>. Command <code>python main.py -m</code>;</li>
+<li>Propose a criterion or algorithm for the selection of
+parent and mining of blocks that minimizes the likelihood
+of orphaning or inclusion in the less successful branch of the blockchain.</li>
+</ol>
+<p>Note that the <code>hash_function()</code> is used for verification server-side in
+the Merkle tree, while <code>double_hash()</code> is used for Proof of Work.
+Both functions can be found in <code>src/utils/cryptographic.py</code>, and the order
+for double hashing a block header is the following:</p>
+<ol>
+<li>previous block hash</li>
+<li>time</li>
+<li>Merkle root</li>
+<li>nonce</li>
+</ol>
+<p>The starting <strong>difficulty is set at 6</strong>.</p>
+<h3 id="report">Report</h3>
+<p>The report must present a comprehensive description of the approach
+employed by the candidate to solve the given problem. It should
+include a detailed explanation of their Proof of Work algorithm,
+demonstrating their understanding of how this consensus mechanism
+operates. If the candidate encountered any issues in their attempts
+to mine a block, these should be documented thoroughly in the report.
+For the report, the candidate should use the
+<a href="https://www.overleaf.com/latex/templates/ieee-conference-template/grfzhhncsfqn">IEEE conference template</a>,
+and the report must not be less than 5 pages long. The report should
+cover the following topics:</p>
+<ol>
+<li>Introduction to <strong>public</strong> and <strong>private</strong> blockchains,
+highlighting the main differences, advantages, and disadvantages of each.</li>
+<li>A detailed explanation of the concept of mining in Proof of Work blockchain
+networks, including how miners compete to add new blocks to the blockchain
+and the role that difficulty plays in this process. From this, the candidate
+should discuss their approach to solving the Code task of this assignment.</li>
+<li>A comparative analysis of the main strengths and weaknesses of the Proof
+of Work consensus mechanism. The candidate should also compare and contrast
+this mechanism with other consensus mechanisms, such as Proof of
+Stake [2-4], Byzantine FT [5], or Proof of Storage [6].</li>
+<li>An analysis of the environmental impact of Proof of Work blockchain
+networks. The candidate should identify the key criticisms of Proof of
+Work from an environmental perspective and discuss potential solutions
+to address these concerns.</li>
+<li>A discussion of the potential security threats to Proof of Work
+blockchain networks. The candidate should highlight the most
+significant security risks and provide recommendations for mitigating them.</li>
+<li>A consideration of the scalability limitations of Proof of Work
+blockchain networks. The candidate should identify the key factors
+that affect scalability and explore potential solutions to address
+these limitations.</li>
+</ol>
+<p>Wishing you the best of luck! If you have any inquiries, please
+feel free to contact us via email at
+<a href="mailto:mohsin.khan@uit.no">mohsin.khan@uit.no</a>
+or <a href="mailto:dominik.thamm@uit.no">dominik.thamm@uit.no</a> or visit
+me at my office in A214.</p>
+<h2 id="references">References</h2>
+<p>[1] Satoshi Nakamoto. Bitcoin: A Peer-to-Peer Electronic Cash System, 2008. <a href="https://bitcoin.org/bitcoin.pdf">Available here</a></p>
+<p>[2] Vitalik Buterin. &quot;A next-generation smart contract and decentralized application platform.&quot; white paper 3.37 (2014): 2-1. <a href="https://finpedia.vn/wp-content/uploads/2022/02/Ethereum_white_paper-a_next_generation_smart_contract_and_decentralized_application_platform-vitalik-buterin.pdf">Available here</a></p>
+<p>[3] Emin Gün Sirer, Kevin Sekniqi, and others, &quot;Avalanche: A Novel Metastable Consensus Protocol Family for Cryptocurrencies&quot;, 2018. <a href="https://assets.website-files.com/5d80307810123f5ffbb34d6e/6009805681b416f34dcae012_Avalanche%20Consensus%20Whitepaper.pdf">Available here</a></p>
+<p>[4] Aggelos Kiayias, Alexander Russell, Bernardo David, and Roman Oliynykov, Ouroboros: A Provably Secure Proof-of-Stake Blockchain Protocol&quot;, 2017. <a href="https://eprint.iacr.org/2016/889.pdf">Available here</a></p>
+<p>[5] Yossi Gilad, Rotem Hemo, Silvio Micali, Georgios Vlachos, and Nickolai Zeldovich. 2017. Algorand: Scaling Byzantine Agreements for Cryptocurrencies. In Proceedings of the 26th Symposium on Operating Systems Principles (SOSP '17). Association for Computing Machinery, New York, NY, USA, 51–68.
+<a href="https://dl.acm.org/doi/abs/10.1145/3132747.3132757">Available here</a></p>
+<p>[6] Benet, J. (2017). Filecoin: A Decentralized Storage Network. <a href="https://filecoin.io/filecoin.pdf">Available here</a></p>
+<h2 id="authors">Authors</h2>
+<ul>
+<li><strong>Enrico Tedeschi</strong> - <em>INF-3203</em> - <a href="https://github.com/ted92/bitcoin-mining-competition">bitcoin-mining-competition</a></li>
+</ul>
+
+</body>
+</html>

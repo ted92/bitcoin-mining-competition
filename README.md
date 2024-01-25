@@ -23,7 +23,7 @@ network substrate has been excluded to avoid unnecessary issues.
 Instead, each candidate will act as a client, and a server will
 be at your disposal for block verification. The process of mining
 a block in the Bitcoin blockchain is associated with a reward
-in the form of Bitcoin. At the culmination of the competition,
+in the form of Bitcoin. At the end of the competition,
 the participant with the highest number of successfully mined
 blocks will be recognized as the winner, but be careful of
 not melting your GPUs! For this task, you have to work in groups

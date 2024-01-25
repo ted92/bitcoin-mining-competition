@@ -155,7 +155,7 @@ structure, the necessary prerequisites for executing it, and
 detailed instructions on how to run it. Additionally, it
 includes illustrative examples of runtime instances.
 ### Prerequisites
-While the code has been developed in `Python 3.7.9`,
+While the code has been developed in `Python 3.9.6`,
 it is expected to be compatible with any subsequent versions
 without issues. The `requirements.txt` file contains a
 list of all the necessary packages and libraries required

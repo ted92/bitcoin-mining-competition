@@ -43,6 +43,7 @@ def main(argv):
                 valid_args = True
                 break
             if opt == "-m":  # mine block
+                # TODO: IMPLEMENT BLOCK MINING
                 response, _, _ = flask_call('POST', BLOCK_PROPOSAL, data=None)
                 print(response)
                 valid_args = True
